@@ -1,17 +1,13 @@
-# main.py
-
-# Carrega a chave de API do arquivo .env
 from dotenv import load_dotenv
 load_dotenv()
 
-# Não precisamos mais importar o LLM, o CrewAI fará isso por nós!
+
 from crewai import Agent, Task, Crew, Process
 
 # --------------------------------------------------------------------------------
 # DEFINIÇÃO DOS AGENTES
 # --------------------------------------------------------------------------------
-# Não precisamos mais passar o `llm` para cada agente.
-# Eles automaticamente usarão o padrão (OpenAI) que está no nosso ambiente.
+
 
 seo_researcher = Agent(
   role='Especialista em Pesquisa de SEO',
@@ -64,7 +60,7 @@ review_task = Task(
 # --------------------------------------------------------------------------------
 # MONTAGEM E EXECUÇÃO DA CREW
 # --------------------------------------------------------------------------------
-# Não precisamos mais passar o `llm` para a Crew. Ela também usará o padrão.
+
 blog_crew = Crew(
   agents=[seo_researcher, content_writer, content_reviewer],
   tasks=[research_task, writing_task, review_task],
